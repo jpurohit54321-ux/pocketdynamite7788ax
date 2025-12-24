@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy 16th Birthday Svana!</title>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -55,7 +57,8 @@
       height: 80px;
       background: maroon;
       border-radius: 50%;
-      animation: floatUp 10s infinite;
+      animation: floatUp 10s infinite linear;
+      opacity: 0.8;
     }
 
     @keyframes floatUp {
@@ -74,8 +77,10 @@
 <body>
 
 <!-- 🎶 Background Music -->
-<audio autoplay loop>
+<!-- NOTE: Autoplay may be blocked until user clicks -->
+<audio controls loop>
   <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
 
 <!-- 🎈 Balloons -->
@@ -112,14 +117,14 @@
       You are smart but retarded.<br>
       You always listen to my nonsense and never mind.<br>
       You yap with me even when I annoy you.<br>
-      You read your books and sit a while .<br>
+      You read your books and sit a while.<br>
       You are funky, cool, and always true.
     </p>
   </div>
 </section>
 
 <footer>
-  From Jay
+  From Jay ❤️
 </footer>
 
 <!-- ⏳ Countdown Script -->
@@ -127,6 +132,8 @@
   function getNextBirthday() {
     const now = new Date();
     let year = now.getFullYear();
+
+    // December = 11 (months are 0-based)
     let birthday = new Date(year, 11, 31, 0, 0, 0);
 
     if (birthday < now) {
@@ -159,3 +166,4 @@
 
 </body>
 </html>
+
