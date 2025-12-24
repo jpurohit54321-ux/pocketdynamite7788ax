@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy 16th Birthday Svana!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0b1c2d, #5a1a1a);
+      color: white;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+
+    .reveal {
+      display: none;
+      font-size: 3rem;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .message, .letter {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background: maroon;
+      border-radius: 50%;
+      animation: floatUp 10s infinite;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); }
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎶 Background Music -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎈 Balloons -->
+<div class="balloon" style="left:10%; animation-delay:0s;"></div>
+<div class="balloon" style="left:40%; animation-delay:2s;"></div>
+<div class="balloon" style="left:70%; animation-delay:4s;"></div>
+
+<!-- 🎂 HERO -->
+<section>
+  <h1>Happy 16th Birthday Svana 🎂</h1>
+  <h2>To My Amazing Best Friend!</h2>
+
+  <div class="countdown" id="countdown">Counting down...</div>
+  <div class="reveal" id="reveal">✨ SHE’S OFFICIALLY 16 ✨</div>
+</section>
+
+<!-- 💌 MESSAGE -->
+<section>
+  <div class="message">
+    <h2>Happy Birthday Feinnnnnnnnnnnnnnn 🎉</h2>
+    <p>
+      Today isn’t just a birthday — it’s a celebration of <em>you</em>.
+      Sixteen looks absolutely perfect on you, and I hope this year brings you
+      happiness, growth, and unforgettable memories.
+    </p>
+  </div>
+</section>
+
+<!-- 💖 LETTER -->
+<section>
+  <div class="letter">
+    <h2>A Little Note 💌</h2>
+    <p>
+      You are smart but retarded.<br>
+      You always listen to my nonsense and never mind.<br>
+      You yap with me even when I annoy you.<br>
+      You read your books and sit a while .<br>
+      You are funky, cool, and always true.
+    </p>
+  </div>
+</section>
+
+<footer>
+  From Jay
+</footer>
+
+<!-- ⏳ Countdown Script -->
+<script>
+  function getNextBirthday() {
+    const now = new Date();
+    let year = now.getFullYear();
+    let birthday = new Date(year, 11, 31, 0, 0, 0);
+
+    if (birthday < now) {
+      birthday = new Date(year + 1, 11, 31, 0, 0, 0);
+    }
+    return birthday;
+  }
+
+  const birthday = getNextBirthday();
+  const countdownEl = document.getElementById("countdown");
+  const revealEl = document.getElementById("reveal");
+
+  setInterval(() => {
+    const now = new Date();
+    const diff = birthday - now;
+
+    if (diff <= 0) {
+      countdownEl.style.display = "none";
+      revealEl.style.display = "block";
+    } else {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
