@@ -1,270 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy 16th Birthday Svana!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 16th Birthday Svana!</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --navy: #081526;
-  --maroon-dark: #4a0f18;
-  --maroon-mid: #7b1f2a;
-  --maroon-light: #a94452;
-  --gold: #f3f3f3;
-  --text: #f3f3f3;
-}
+    <style>
+        :root {
+            --navy: #081526;
+            --maroon-dark: #4a0f18;
+            --maroon-mid: #7b1f2a;
+            --maroon-light: #a94452;
+            --gold: #f3f3f3;
+            --text: #f3f3f3;
+            --title-color: #f3f3f3; /* Default light title for dark background */
+            --card-bg: linear-gradient(160deg, #a94452, #7b1f2a);
+            --gallery-item-bg: #fff;
+        }
 
-body.light {
-  --navy: #f6f2f2;
-  --maroon-dark: #f2c4cb;
-  --maroon-mid: #e08c9a;
-  --maroon-light: #ffffff;
-  --text: #222;
-}
+        body.light {
+            --navy: #f6f2f2;
+            --maroon-dark: #f2c4cb;
+            --maroon-mid: #e08c9a;
+            --maroon-light: #ffffff;
+            --text: #222;
+            --title-color: #000000; /* Title turns black in light mode */
+            --card-bg: white;
+            --gallery-item-bg: #f0f0f0;
+        }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg,var(--navy),var(--maroon-dark),var(--maroon-mid));
-  color: var(--text);
-  text-align: center;
-  transition: 0.4s;
-}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, var(--navy), var(--maroon-dark), var(--maroon-mid));
+            background-attachment: fixed;
+            color: var(--text);
+            text-align: center;
+            transition: 0.4s;
+        }
 
-h1,h2 {
-  font-family: 'Playfair Display', serif;
-}
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
 
-h1 {
-  color: var(--gold);
-  font-size: 2.3rem;
-}
+        h1 {
+            color: var(--title-color); /* Uses the variable that changes */
+            font-size: 2.3rem;
+            margin-top: 20px;
+            transition: color 0.4s;
+        }
 
-section {
-  padding: 60px 16px;
-}
+        section {
+            padding: 40px 16px;
+        }
 
-/* Toggle */
-.toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background: var(--maroon-mid);
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+        /* Toggle Button */
+        .toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: var(--maroon-mid);
+            color: white;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            z-index: 1000;
+        }
 
-/* Countdown */
-.countdown {
-  font-size: 1.6rem;
-}
+        /* Countdown */
+        .countdown {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
 
-.reveal {
-  display: none;
-  font-size: 2.5rem;
-  color: var(--gold);
-  animation: pop 1s ease infinite alternate;
-}
+        .reveal {
+            display: none;
+            font-size: 2.5rem;
+            color: var(--gold);
+            animation: pop 1s ease infinite alternate;
+        }
 
-@keyframes pop {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
-}
+        @keyframes pop {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
 
-/* Cards */
-.card {
-  max-width: 700px;
-  margin: auto;
-  padding: 28px;
-  border-radius: 18px;
-  background: linear-gradient(160deg,var(--maroon-light),var(--maroon-mid));
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
+        /* Card Styles */
+        .card {
+            max-width: 700px;
+            margin: auto;
+            padding: 28px;
+            border-radius: 18px;
+            background: var(--card-bg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            color: inherit;
+        }
 
-/* Letter */
-.letter p {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
+        .letter p {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
-  gap: 12px;
-  max-width: 700px;
-  margin: auto;
-}
+        /* Gallery Section */
+        .slay-section {
+            max-width: 900px;
+            margin: auto;
+        }
 
-.gallery div {
-  height: 120px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-}
+        .gallery-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--title-color);
+        }
 
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
 
-/* BALLOONS – UPGRADED */
-.balloon {
-  position: fixed;
-  bottom: -120px;
-  width: 55px;
-  height: 75px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%,
-      rgba(255,255,255,0.9),
-      var(--maroon-light) 25%,
-      var(--maroon-dark) 70%);
-  box-shadow:
-    inset -8px -12px 20px rgba(0,0,0,0.25),
-    0 15px 30px rgba(0,0,0,0.45);
-  animation: floatUp 16s infinite ease-in;
-  opacity: 0.95;
-}
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background-color: var(--gallery-item-bg);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            aspect-ratio: 4 / 5;
+        }
 
-.balloon::after {
-  content: '';
-  position: absolute;
-  bottom: -26px;
-  left: 50%;
-  width: 2px;
-  height: 26px;
-  background: rgba(255,255,255,0.8);
-  transform: translateX(-50%);
-}
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-@keyframes floatUp {
-  from { transform: translateY(0) rotate(-2deg); }
-  to { transform: translateY(-140vh) rotate(3deg); }
-}
+        .gallery-item:hover {
+            transform: translateY(-10px) rotate(1deg);
+        }
 
-footer {
-  padding: 25px;
-  opacity: 0.85;
-}
+        /* Balloons */
+        .balloon {
+            position: fixed;
+            bottom: -120px;
+            width: 55px;
+            height: 75px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), var(--maroon-light) 25%, var(--maroon-dark) 70%);
+            box-shadow: inset -8px -12px 20px rgba(0,0,0,0.25), 0 15px 30px rgba(0,0,0,0.45);
+            animation: floatUp 16s infinite ease-in;
+            opacity: 0.95;
+            z-index: -1;
+        }
 
-/* Fireworks canvas */
-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-}
-</style>
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            width: 2px;
+            height: 26px;
+            background: rgba(255,255,255,0.8);
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0) rotate(-2deg); }
+            to { transform: translateY(-140vh) rotate(3deg); }
+        }
+
+        footer {
+            padding: 40px;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+
+        canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 
 <body>
 
 <button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
-
 <canvas id="fireworks"></canvas>
 
-<!-- Balloons -->
 <div class="balloon" style="left:10%"></div>
 <div class="balloon" style="left:35%;animation-delay:3s"></div>
 <div class="balloon" style="left:60%;animation-delay:6s"></div>
 <div class="balloon" style="left:85%;animation-delay:1s"></div>
+
 <section>
-  <h1>Happy 16th Birthday Svana 🎂</h1>
-  <h2>To My Amazing Best Friend</h2>
-  <div class="countdown" id="countdown">Counting down...</div>
-  <div class="reveal" id="reveal">🎂✨ SHE’S OFFICIALLY 16 ✨🎂</div>
+    <h1>Happy 16th Birthday Svana 🎂</h1>
+    <div class="countdown" id="countdown">Counting down...</div>
+    <div class="reveal" id="reveal">🎂✨ SHE’S OFFICIALLY 16 ✨🎂</div>
 </section>
 
 <section>
-  <div class="card">
-    <h2>Happy Birthday Feinnnnnnnnnnnnnnn 🎉</h2>
-    <p>
-      Today isn’t just a birthday — it’s a celebration of <em>you</em>.
-      You are Sixteen YAYAYAYY!.
-    </p>
-  </div>
+    <div class="card">
+        <h2>Happy Birthday Feinnnnnnnnnnnnnnn 🎉</h2>
+        <p>Today isn’t just a birthday, it’s a celebration of <em>you</em>. You are Sixteen YAYAYAYY!</p>
+    </div>
 </section>
 
 <section>
-  <div class="card letter">
-    <h2>A Little Note </h2>
-    <p>
-      You are smart but retarded.<br>
-      You always listen to my nonsense.<br>
-      You yap with me even when I annoy you.<br>
-      You read your books and sit a while.<br>
-      You are funky, cool, and always true.
-    </p>
-  </div>
+    <div class="card letter">
+        <h2>A Little Note</h2>
+        <p>
+            You are smart but retarded.<br>
+            You always listen to my nonsense.<br>
+            You yap with me even when I ragebait you.<br>
+            You read your books and sit a while.<br>
+            You are funky, cool, and always true.<br>
+            I hope you have the happiest of birthday ever<br>
+            Enjoy your day gang
+        </p>
+    </div>
 </section>
 
-<section>
-  <h2>Our Memories 📸</h2>
-  <div class="gallery">
-    <div>Add Photo</div>
-    <div>Add Photo</div>
-    <div>Add Photo</div>
-    <div>Add Photo</div>
-  </div>
+<section class="slay-section">
+    <h2 class="gallery-title">Svana Slaying...</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="5.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="2.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="4.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="1.jpeg" alt="Svana Slaying"></div>
+    </div>
 </section>
 
-<footer>— From Jay </footer>
+<footer> From Jay</footer>
 
 <script>
 /* Theme Toggle */
 function toggleTheme(){
-  document.body.classList.toggle("light");
+    document.body.classList.toggle("light");
 }
 
-/* Countdown */
-const birthday = new Date(new Date().getFullYear(),11,31);
+/* Countdown Setup (Set to Dec 31st) */
+const birthday = new Date(new Date().getFullYear(), 11, 31);
 const countdown = document.getElementById("countdown");
 const reveal = document.getElementById("reveal");
 
-setInterval(()=>{
-  const diff = birthday - new Date();
-  if(diff <= 0){
-    countdown.style.display="none";
-    reveal.style.display="block";
-    startFireworks();
-  } else {
-    const d=Math.floor(diff/86400000);
-    const h=Math.floor(diff/3600000%24);
-    const m=Math.floor(diff/60000%60);
-    const s=Math.floor(diff/1000%60);
-    countdown.textContent=`⏳ ${d}d ${h}h ${m}m ${s}s`;
-  }
-},1000);
-
-/* Fireworks */
-function startFireworks(){
-  const c=document.getElementById("fireworks");
-  const ctx=c.getContext("2d");
-  c.width=innerWidth; c.height=innerHeight;
-
-  setInterval(()=>{
-    ctx.clearRect(0,0,c.width,c.height);
-    for(let i=0;i<80;i++){
-      ctx.beginPath();
-      ctx.arc(
-        Math.random()*c.width,
-        Math.random()*c.height,
-        Math.random()*3,
-        0,Math.PI*2
-      );
-      ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
-      ctx.fill();
+setInterval(() => {
+    const diff = birthday - new Date();
+    if(diff <= 0){
+        countdown.style.display = "none";
+        reveal.style.display = "block";
+        startFireworks();
+    } else {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff / 3600000) % 24);
+        const m = Math.floor((diff / 60000) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        countdown.textContent = `⏳ ${d}d ${h}h ${m}m ${s}s`;
     }
-  },200);
+}, 1000);
+
+/* Simple Fireworks Logic */
+function startFireworks(){
+    const c = document.getElementById("fireworks");
+    const ctx = c.getContext("2d");
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+
+    setInterval(() => {
+        ctx.clearRect(0, 0, c.width, c.height);
+        for(let i = 0; i < 80; i++){
+            ctx.beginPath();
+            ctx.arc(Math.random() * c.width, Math.random() * c.height, Math.random() * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            ctx.fill();
+        }
+    }, 200);
 }
 </script>
 
 </body>
 </html>
-
