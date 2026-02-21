@@ -1,1 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 16th Birthday Svana!</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Pacifico&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── DARK MODE (default) ── */
+        :root {
+            --navy:         #081526;
+            --maroon-dark:  #4a0f18;
+            --maroon-mid:   #7b1f2a;
+            --maroon-light: #a94452;
+            --gold:         #f3f3f3;
+            --text:         #f3f3f3;
+            --title-color:  #f3f3f3;
+            --card-bg:      linear-gradient(160deg, #a94452, #7b1f2a);
+            --card-text:    #f3f3f3;
+            --gallery-item-bg: #fff;
+            --glow-color:   rgba(169, 68, 82, 0.65);
+            --section-glow: 0 0 40px rgba(169,68,82,0.5), 0 0 80px rgba(123,31,42,0.3);
+            --btn-bg:       #7b1f2a;
+            --btn-text:     #f3f3f3;
+        }
+
+        /* ── LIGHT MODE ── */
+        body.light {
+            --navy:         #fdf0f2;
+            --maroon-dark:  #f7d6db;
+            --maroon-mid:   #e89aaa;
+            --maroon-light: #f3b8c3;
+            --gold:         #7b1f2a;
+            --text:         #222222;
+            --title-color:  #3a0a12;
+            --card-bg:      linear-gradient(160deg, #f7d6db, #e89aaa);
+            --card-text:    #2a0a10;
+            --gallery-item-bg: #f0e4e6;
+            --glow-color:   rgba(232,154,170,0.7);
+            --section-glow: 0 0 40px rgba(232,154,170,0.55), 0 0 80px rgba(247,214,219,0.35);
+            --btn-bg:       #a94452;
+            --btn-text:     #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, var(--navy), var(--maroon-dark), var(--maroon-mid));
+            background-attachment: fixed;
+            color: var(--text);
+            text-align: center;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        h1 {
+            color: var(--title-color);
+            font-size: 2.3rem;
+            margin-top: 20px;
+            transition: color 0.4s;
+        }
+
+        section {
+            padding: 40px 16px;
+        }
+
+        /* ── GLOW on every section ── */
+        section > .card,
+        section > .slay-section,
+        .slay-section {
+            box-shadow: var(--section-glow);
+            transition: box-shadow 0.4s;
+        }
+
+        section {
+            position: relative;
+        }
+
+        section::after {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 22px;
+            box-shadow: var(--section-glow);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        section > * { position: relative; z-index: 1; }
+
+        /* ── Toggle Button ── */
+        .toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: background 0.4s, color 0.4s, border-color 0.4s;
+        }
+
+        .toggle:hover {
+            opacity: 0.85;
+            transform: scale(1.05);
+        }
+
+        /* ── Countdown ── */
+        .countdown {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--title-color);
+            transition: color 0.4s;
+        }
+
+        .reveal {
+            display: none;
+            font-size: 2.5rem;
+            color: var(--gold);
+            animation: pop 1s ease infinite alternate;
+        }
+
+        @keyframes pop {
+            from { transform: scale(1); }
+            to   { transform: scale(1.05); }
+        }
+
+        /* ── Cards ── */
+        .card {
+            max-width: 700px;
+            margin: auto;
+            padding: 28px;
+            border-radius: 18px;
+            background: var(--card-bg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), var(--section-glow);
+            color: var(--card-text);
+            transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+        }
+
+        .card h2 {
+            color: var(--card-text);
+            transition: color 0.4s;
+        }
+
+        .letter p {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* ── Pros & Cons Card ── */
+        .pros-cons-card {
+            padding: 35px;
+            max-width: 720px;
+            margin: auto;
+            text-align: left;
+            background: var(--card-bg);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25), var(--section-glow);
+            border-radius: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s, color 0.4s;
+            color: var(--card-text);
+        }
+
+        .pros-cons-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35), var(--section-glow);
+        }
+
+        .pros-cons-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--card-text);
+            transition: color 0.4s;
+        }
+
+        .pros-cons-card ul {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        /* ── Gallery ── */
+        .slay-section {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 22px;
+        }
+
+        .gallery-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--title-color);
+            transition: color 0.4s;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 0 18px var(--glow-color);
+            background-color: var(--gallery-item-bg);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            aspect-ratio: 4 / 5;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 30px var(--glow-color);
+        }
+
+        /* ── Balloons ── */
+        .balloon {
+            position: fixed;
+            bottom: -120px;
+            width: 55px;
+            height: 75px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), var(--maroon-light) 25%, var(--maroon-dark) 70%);
+            box-shadow: inset -8px -12px 20px rgba(0,0,0,0.25), 0 15px 30px rgba(0,0,0,0.45);
+            animation: floatUp 16s infinite ease-in;
+            opacity: 0.95;
+            z-index: -1;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            width: 2px;
+            height: 26px;
+            background: rgba(255,255,255,0.8);
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0) rotate(-2deg); }
+            to   { transform: translateY(-140vh) rotate(3deg); }
+        }
+
+        footer {
+            padding: 40px;
+            opacity: 0.85;
+            font-weight: 600;
+            color: var(--title-color);
+            transition: color 0.4s;
+        }
+
+        /* ── Fireworks canvas sits BEHIND everything ── */
+        canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container { grid-template-columns: 1fr 1fr; gap: 10px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+<canvas id="fireworks"></canvas>
+
+<div class="balloon" style="left:10%"></div>
+<div class="balloon" style="left:35%;animation-delay:3s"></div>
+<div class="balloon" style="left:60%;animation-delay:6s"></div>
+<div class="balloon" style="left:85%;animation-delay:1s"></div>
+
+<section>
+    <h1>Happy 16th Birthday Svana 🎂</h1>
+    <div class="countdown" id="countdown">Counting down...</div>
+    <div class="reveal" id="reveal">🎂✨ SHE'S OFFICIALLY 16 ✨🎂</div>
+</section>
+
+<section>
+    <div class="card">
+        <h2>Happy Birthday Feinnnnnnnnnnnnnnn 🎉</h2>
+        <p>Today isn't just a birthday, it's a celebration of <em>you</em>. You are Sixteen YAYAYAYY!</p>
+    </div>
+</section>
+
+<section>
+    <div class="card letter">
+        <h2>A Little Note</h2>
+        <p>
+            You are smart but retarded.<br>
+            You always listen to my nonsense.<br>
+            You yap with me even when I ragebait you.<br>
+            You read your books and sit a while.<br>
+            You are funky, cool, and always true.<br>
+            I hope you have the happiest birthday of birthdays ever.<br>
+            Enjoy your day gang!
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="card pros-cons-card">
+        <h2>Pros and Cons</h2>
+
+        <div style="font-family:'Roboto',sans-serif;font-size:1.15rem;line-height:1.8;">
+            <strong style="font-size:1.25rem;display:block;margin-bottom:8px;">Pros</strong>
+            <ul style="margin:0 0 24px 20px;list-style-type:disc;">
+                <li>Entertaining (you'll never be bored — she's a W yapper)</li>
+                <li>Makes you happy if you're sad by talking to you</li>
+                <li>Green Flag</li>
+                <li>Replies quickly</li>
+                <li>Funny (sometimes)</li>
+                <li>Caring</li>
+                <li>Friendly</li>
+                <li>Smart (slow sometimes tho)</li>
+                <li>Trustworthy and loyal</li>
+                <li>Very Helpful</li>
+                <li>F1 lover (Ferrari fan tho)</li>
+            </ul>
+
+            <strong style="font-size:1.25rem;display:block;margin-bottom:8px;">Cons</strong>
+            <ul style="margin:0 0 0 20px;list-style-type:disc;">
+                <li>Ghosts you if she's mad</li>
+                <li>Dry if she's mad</li>
+                <li>Annoys you by ragebaiting</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="slay-section">
+    <h2 class="gallery-title">You Slaying...</h2>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="5.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="2.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="4.jpeg" alt="Svana Slaying"></div>
+        <div class="gallery-item"><img src="1.jpeg" alt="Svana Slaying"></div>
+    </div>
+</section>
+
+<footer>From Jay</footer>
+
+<script>
+/* ── Theme Toggle ── */
+function toggleTheme() {
+    document.body.classList.toggle("light");
+}
+
+/* ── Countdown — targets Dec 31 of current year ── */
+// FIX: If Dec 31 has already passed this year, target next year's Dec 31
+function getNextBirthday() {
+    const now = new Date();
+    let year = now.getFullYear();
+    const bday = new Date(year, 11, 31); // Dec 31
+    if (now >= bday) bday.setFullYear(year + 1); // already passed → next year
+    return bday;
+}
+
+const birthday = getNextBirthday();
+const countdownEl = document.getElementById("countdown");
+const revealEl    = document.getElementById("reveal");
+
+const timer = setInterval(() => {
+    const diff = birthday - new Date();
+    if (diff <= 0) {
+        clearInterval(timer);
+        countdownEl.style.display = "none";
+        revealEl.style.display    = "block";
+        startFireworks();
+    } else {
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff / 3600000) % 24);
+        const m = Math.floor((diff / 60000)  % 60);
+        const s = Math.floor((diff / 1000)   % 60);
+        countdownEl.textContent = `⏳ ${d}d ${h}h ${m}m ${s}s`;
+    }
+}, 1000);
+
+/* ── Real Fireworks ── */
+function startFireworks() {
+    const canvas = document.getElementById("fireworks");
+    const ctx    = canvas.getContext("2d");
+
+    function resize() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    const particles = [];
+
+    function spawnBurst() {
+        const x   = Math.random() * canvas.width;
+        const y   = Math.random() * canvas.height * 0.6;
+        const hue = Math.random() * 360;
+        for (let i = 0; i < 80; i++) {
+            const angle  = (Math.PI * 2 / 80) * i;
+            const speed  = 2 + Math.random() * 4;
+            particles.push({
+                x, y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                alpha: 1,
+                hue: hue + Math.random() * 30,
+                size: 2 + Math.random() * 2
+            });
+        }
+    }
+
+    setInterval(spawnBurst, 600);
+
+    function loop() {
+        ctx.fillStyle = "rgba(0,0,0,0.18)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x    += p.vx;
+            p.y    += p.vy;
+            p.vy   += 0.06;   // gravity
+            p.vx   *= 0.98;   // drag
+            p.alpha -= 0.018;
+
+            if (p.alpha <= 0) { particles.splice(i, 1); continue; }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(${p.hue}, 100%, 65%, ${p.alpha})`;
+            ctx.fill();
+        }
+        requestAnimationFrame(loop);
+    }
+    loop();
+}
+</script>
+
+</body>
+</html>
